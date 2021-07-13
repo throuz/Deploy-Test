@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <h1>{{ hello }}</h1>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
@@ -135,12 +136,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import axios from "axios";
 
 export default defineComponent({
   name: "HelloWorld",
   props: {
     msg: String,
+  },
+  setup() {
+    const hello = ref("");
+    // Want to use async/await? Add the `async` keyword to your outer function/method.
+    const getUser = async () => {
+      try {
+        const response = await axios.get("https://bitbet.shop/api/greeting");
+        hello.value = response.data;
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUser();
+    return { hello };
   },
 });
 </script>
