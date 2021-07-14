@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
 module.exports = {
-    publicPath: process.env.NODE_ENV === "production" ? "/Deploy-Test/" : "/",
+    // publicPath: process.env.NODE_ENV === "production" ? "/Deploy-Test/" : "/",
+    publicPath: "/",
 };
